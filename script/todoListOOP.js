@@ -1,3 +1,5 @@
+
+// classes
 class Todo {
   id;
   description;
@@ -44,7 +46,7 @@ class TodoManager {
   }
 }
 
-
+// globals
 let tableBody = document.getElementById("todoListBody");
 let addBtn = document.getElementById("addTaskBtn");
 let taskManager = new TodoManager();
@@ -60,9 +62,9 @@ addBtn.addEventListener("click", () => {
 
 let storageArr = JSON.parse(localStorage.getItem("todo_list")) || [];
 let todoArr = storageArr.map(item => JSON.parse(item));
-todoArr.forEach((item, index) => {
-  console.log(item);
-  taskManager.addExistingTask(item);
+todoArr.forEach((task) => {
+  console.log(task);
+  taskManager.addExistingTask(task);
 });
 
 

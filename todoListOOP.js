@@ -108,13 +108,27 @@ function addTaskToScreen(task, index) {
   tableBody.appendChild(tr_row);
 
   chkbox.addEventListener("change", () => {
+    let storageArr = JSON.parse(localStorage.getItem("todo_list")) || [];
+    let todoArr = storageArr.map(item => JSON.parse(item));
     if (chkbox.checked == true) {
       task.isComplete = true;
       td_desc.style.textDecoration = "line-through";
+      todoArr.forEach((item, ix) => {
+        if (ix == index) {
+          item.isComplete = true;
+        }
+      })
     } else {
       task.isComplete = false;
       td_desc.style.textDecoration = "none";
+      todoArr.forEach((item, ix) => {
+        if (ix == index) {
+          item.isComplete = false;
+        }
+      })
     }
+    todoArr = todoArr.map(item => JSON.stringify(item));
+    localStorage.setItem("todo_list", JSON.stringify(todoArr));
   });
 
   btn_edit.addEventListener("click", () => {

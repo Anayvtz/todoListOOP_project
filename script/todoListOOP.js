@@ -11,8 +11,12 @@ class Todo {
   constructor(id, description) {
     this.id = id;
     this.description = description;
-    this.creationDate = new Date();
+    this.creationDate = this.getDate();
     this.isComplete = false;
+  }
+  getDate() {
+    let date = new Date();
+    return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
   }
 }
 
